@@ -18,7 +18,7 @@ class AddMovie(models.Model):
     description = models.TextField(null=True)
     catagory = models.CharField(max_length=200 , null=False , blank=False)
     publish = models.DateField()
-    image = models.ImageField(upload_to='movie_images', null=False, blank=False)
+    image = models.ImageField(upload_to='Image', null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     created_at = models.DateTimeField(auto_now_add=True)
     # userid = models.ForeignKey(CustomUser , null=False , on_delete=models.CASCADE)

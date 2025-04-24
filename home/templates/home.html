@@ -1,7 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container mx-auto pt-4 px-5">
 
-this is home page
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-auto">
+    {% for movie in movies %}
+    <div class="card w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+        <a href="#">
+            <img class="p-0.5 m-2" src="{{ movie.image.url }}" alt="{{ movie.title }}" />
+        </a>
+        <div class="px-5 pb-5">
+            <a href="#">
+                <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                    {{ movie.title }}
+                </h5>
+            </a>
+ 
+            <div class="flex items-center mt-2.5 mb-5">
+                <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                    {% for i in "1234" %}
+                    <svg class="w-4 h-4 text-yellow-300" fill="currentColor" viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M20.924 7.625a1.523...Z" />
+                    </svg>
+                    {% endfor %}
+                    <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" fill="currentColor" viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M20.924 7.625a1.523...Z" />
+                    </svg>
+                </div>
+                <!-- <span class=" text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm dark:bg-blue-200 dark:text-blue-800 text-center">
+                    {{ movie.description}}
+                </span> -->
+
+                <p class="text-center  text-white font-semibold dark:bg-blue-200 dark:text-blue-800 p-1 rounded-sm px-2">{{ movie.description }}</p>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <a href="{% url 'deletemovie' movie.id %}" class="bg-blue-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-700" >Delete</a>
+                <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Watch
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</div>
 
 {% endblock %}

@@ -3,13 +3,15 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserForm, AddMovieForm
+from .models import AddMovie
 from django.contrib import messages
 
 # Create your views here.
 
 
 def home(request):
-    return render(request, "home.html")
+    movies = AddMovie.objects.all()
+    return render(request, "home.html" , {"movies" : movies})
 
 
 def register(request):
@@ -53,3 +55,9 @@ def addmovie(request):
         form = AddMovieForm()
 
     return render(request, "addmovie.html", {"form": form})
+    
+
+def deletemovie(request , id):
+    movie = AddMovie.objects.get(id = id)
+    movie.delete()
+    return redirect('home')
