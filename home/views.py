@@ -37,7 +37,7 @@ def login(request):
         else:
             login(request, user)
             messages.success(request, "You have successfully logged in.")
-            return redirect("home")
+            return redirect('home')
 
     return render(request, "login.html")
 
